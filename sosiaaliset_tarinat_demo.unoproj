@@ -1,0 +1,19 @@
+{
+  "RootNamespace":"",
+  "Packages": [
+    "Fuse",
+    "FuseJS",
+    "Fuse.Controls.CameraView",
+    "Fuse.ImageTools",
+    "Fuse.Camera"
+  ],
+  "Includes": [
+    "*",
+    "**.js:Bundle",
+    "*.jpg:Bundle",
+    "*.png:Bundle"
+  ],
+  "Mobile": {
+    "Orientations": "Portrait"
+  }
+}
