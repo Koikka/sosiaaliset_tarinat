@@ -42,15 +42,18 @@
 						            <Set text.Value="" />
 						        </Clicked>
 						    </Button>
-						    <TextInput ux:Name="text" PlaceholderText="Name to event" PlaceholderColor="#ccc" Height="50" Padding="5" Margin="10">
+						    <TextInput ux:Name="text" PlaceholderText="Name to event" PlaceholderColor="#ccc" Height="50" Padding="5" Margin="10" Value="{image_name}">
 						        <Rectangle Layer="Background">
 						            <Stroke Width="2" Brush="#BBB" />
 						        </Rectangle>
 						    </TextInput>
 						</Panel>
+						<Panel>
+							<Text Value="{image_path}"/>
+						</Panel>
 						<Panel Width="200">
-					    	<Button Alignment="CenterRight" Text="Save" Margin="5"></Button>
-					    	<Button Alignment="CenterLeft" Text="Ignore" Margin="5"></Button>
+					    	<Button Alignment="CenterRight" Text="Save" Margin="5" Clicked="{image_saved}"></Button>
+					    	<Button Alignment="CenterLeft" Text="Ignore" Margin="5" Clicked="{image_ignored}"></Button>
 					    </Panel>
 					</StackPanel>
 				</Panel>
@@ -171,6 +174,12 @@
 						        <SolidColor Color="#fff"/>
 						    </Rectangle>
 							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Clear values</Text>
+						</Panel>
+						<Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{empty_memory}">
+						    <Rectangle Height="2" Alignment="Bottom">
+						        <SolidColor Color="#fff"/>
+						    </Rectangle>
+							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Clear memory</Text>
 						</Panel>
 						<ScrollView Background="#f9f9f9">
 						<!-- <ScrollView ux:Name="parentScrollView" Background="#f9f9f9"> -->

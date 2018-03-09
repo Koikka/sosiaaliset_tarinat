@@ -25,6 +25,8 @@ var show_help_text = Observable(true);
 //     { position_at_grid: Observable(), id: "def_id_2", name: Observable("Jerard"), age: "666", age_field: Observable(), image_done: Observable(), show_image: Observable(), img: "Assets/done.png", can_be_done: Observable() }
 // );
 var items = Observable();
+var image_path = Observable();
+var image_name = Observable();
 var default_items = Observable(
     /*{ position_at_grid: Observable(), id: "id_0", position: 0, default_items_color: Observable("#AED6F1"), name: Observable("name 1"), img: "http://i0.wp.com/www.samk.fi/wp-content/themes/suunta/images/SAMK-logo.png", is_added: Observable() },
     { position_at_grid: Observable(), id: "id_1", position: 1, default_items_color: Observable("#AED6F1"), name: Observable("name 2"), img: "http://i0.wp.com/www.samk.fi/wp-content/themes/suunta/images/SAMK-logo.png", is_added: Observable() },
@@ -199,6 +201,7 @@ function open_camera() {
                 imgPath = newImage.path;
                 save_visible.value = true;
                 console.log(save_visible.value);
+                image_path.value = newImage.path;
                 //saveMessage(newImage.path);
             });
         // saveMessage(imgPath);
@@ -293,45 +296,58 @@ function addItem() {
 function empty_memory() {
     Storage.write(SAVENAME, "");
 }
-function saveMessage(filePath) {
+function saveMessage(filePath, name) {
     var object = [];
     Storage.read(SAVENAME).then(function(content) {
         object = JSON.parse(content);
-        object.push({"img": filePath, "name": "new"});
-        // object.push({"img": filePath, "name": "new"});
+        console.log("has content: "+content);
+        object.push({"img": filePath, "name": name, "unique": "unique"});
     }, function(error) {
-        console.log("some error while reading data: "+error);
-        object.push({"img": filePath, "name": "new"});
-        // object.push({"img": filePath, "name": "new"});
+        console.log("some error while reading data");
     });
-    if (object.length == 0) {
-        console.log("Empty object");
-        // object.push({"img": filePath, "name": "new"});
-        // object.push({"img": filePath, "name": "new"});
-    }
-    object = JSON.stringify(object);
-    console.log("Save object: "+object);
-    // var storeObject = {message: message.value};
-    // Storage.write(SAVENAME, JSON.stringify(filePath));
-    Storage.write(SAVENAME, object);
-    // Storage.write(SAVENAME, filePath);
-    // hasStored.value = true;
-    var last_item = 0;
+    console.log("---------------------------------");
+    //default_items.value = default_items.value;
     for (var i = 0; i < default_items.length; i++) {
-        // if (default_items.getAt(i).id == id) {
-        //     var elem = { "display_img": content, "position_at_grid": Observable(1), "id": 1, "name": Observable("temp"), "age": 0, "age_field": Observable(), "image_done": Observable(), "show_image": Observable(), "img": "Assets/done.png", "can_be_done": Observable(false), "change_color": Observable(false) };
-        //     items.add(elem);
-        // }
-        last_item = i;
+        console.log(default_items.getAt(i).unique);
+        if (default_items.getAt(i).unique === "unique") {
+            default_items.removeAt(i);
+        }
     }
-    last_item++;
-    console.log("content: "+object);
-    object = JSON.parse(object);
-    for (var i = 0; i < object.length; i++) {
-        var elem = { position_at_grid: Observable(), id: "id_"+last_item, position: last_item, default_items_color: Observable("#AED6F1"), name: Observable(object[i].name), img: object[i].img, is_added: Observable(), change_color: Observable(false) };
-        default_items.add(elem);
+    console.log("---------------------------------");
+    setTimeout(function() {
+        if (object.length == 0) {
+            console.log("Empty object");
+            object.push({"img": filePath, "name": name, "unique": "unique"});
+        }
+        object = JSON.stringify(object);
+        console.log("Save object: "+object);
+        Storage.write(SAVENAME, object);
+
+        var last_item = 0;
+        for (var i = 0; i < default_items.length; i++) {
+            last_item = i;
+        }
         last_item++;
-    }
+        console.log("content: "+object);
+        object = JSON.parse(object);
+        for (var i = 0; i < object.length; i++) {
+            var elem = { position_at_grid: Observable(), id: "id_"+last_item, position: last_item, default_items_color: Observable("#AED6F1"), name: Observable(object[i].name), img: object[i].img, is_added: Observable(), change_color: Observable(false), "unique": "unique" };
+            default_items.add(elem);
+            last_item++;
+        }
+    }, 500);
+    image_name.value = "";
+}
+function image_saved() {
+    save_visible.value = false;
+    console.log(image_path.value);
+    console.log(image_name.value);
+    saveMessage(image_path.value, image_name.value);
+    // TODO SAVE VALUES
+}
+function image_ignored() {
+    save_visible.value = false;
+    // TODO SAVE VALUES
 }
 Storage.read(SAVENAME).then(function(content) {
     // test_images.value = JSON.parse(content);
@@ -348,7 +364,7 @@ Storage.read(SAVENAME).then(function(content) {
     console.log("content: "+content);
     content = JSON.parse(content);
     for (var i = 0; i < content.length; i++) {
-        var elem = { position_at_grid: Observable(), id: "id_"+last_item, position: last_item, default_items_color: Observable("#AED6F1"), name: Observable(content[i].name), img: content[i].img, is_added: Observable(), change_color: Observable(false) };
+        var elem = { position_at_grid: Observable(), id: "id_"+last_item, position: last_item, default_items_color: Observable("#AED6F1"), name: Observable(content[i].name), img: content[i].img, is_added: Observable(), change_color: Observable(false), "unique": "unique" };
         default_items.add(elem);
         // content[i]
         last_item++;
@@ -381,5 +397,10 @@ module.exports = {
     test_images: test_images,
     show_help_text: show_help_text,
     clear_values: clear_values,
-    save_visible: save_visible
+    save_visible: save_visible,
+    image_saved: image_saved,
+    image_ignored: image_ignored,
+    image_path: image_path,
+    image_name: image_name,
+    empty_memory: empty_memory
 };
