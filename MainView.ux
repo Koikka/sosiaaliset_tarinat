@@ -29,6 +29,8 @@
 				<Rotate Target="box" DegreesY="-90" Duration=".7" Delay="0" DelayBack="0" Easing="ExponentialOut" EasingBack="ExponentialIn" />
 				<Change main_content.Opacity="0" Duration=".7" DelayBack="0" Easing="ExponentialOut" EasingBack="ExponentialIn" />
 				<Change admin_content.Opacity="0" Duration=".7" DelayBack="0" Easing="ExponentialOut" EasingBack="ExponentialIn" />
+				<Change main_content_buttons.Opacity="0" Duration=".7" DelayBack="0" Easing="ExponentialOut" EasingBack="ExponentialIn" />
+				<Change main_content_3.Opacity="0" Duration=".7" DelayBack="0" Easing="ExponentialOut" EasingBack="ExponentialIn" />
 				<Change menu.Opacity="1" Duration=".3" DelayBack="0" Easing="QuarticIn" EasingBack="QuarticIn" />
 				<Change hamburger.IsOpen="true" DelayBack="0.2" />
 			</WhileTrue>
@@ -95,64 +97,50 @@
 									<Clicked>
 										<Set menu_is_open.Value="false" />
 										<Set admin_content.Visibility="Hidden"/>
-										<Set main_content.Visibility="Visible"/>
+										<Set main_content_3.Visibility="Hidden"/>
+										<Set main_content.Visibility="Hidden"/>
+										<Set main_content_buttons.Visibility="Visible"/>
 									</Clicked>
 								</MenuButton>
 								<MenuButton Alignment="Left" Text="Admin">
 									<Clicked>
 										<Set menu_is_open.Value="false" />
 										<Set main_content.Visibility="Hidden"/>
+										<Set main_content_3.Visibility="Hidden"/>
 										<Set admin_content.Visibility="Visible"/>
+										<Set main_content_buttons.Visibility="Hidden"/>
 									</Clicked>
 								</MenuButton>
 							</StackPanel>
 						</StackPanel>
 					</Panel>
 					<!-- PAGE CONTENT -->
-					<DockPanel  ux:Name="main_content" Visibility="Visible">
+					<DockPanel  ux:Name="main_content_buttons" Visibility="Visible">
 						<Panel Dock="Top" Height="56">
 							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Social stories Main</Text>
 						</Panel>
-						<ScrollView Background="#f9f9f9">
-							<Panel>
-								<WhileTrue Value="{show_help_text}">
-									<Text Alignment="Center" TextAlignment="Center" FontSize="20" Color="#000000" Margin="20,5" Padding="10,10" Value="Go to admin panel to add items here"/>
-								</WhileTrue>
-								<Grid ColumnCount="2" DefaultColumn="1*" CellSpacing="10" Margin="10,10">
-	                                <!-- <Button Margin="0,0,0,0" Opacity="1" Clicked="{addItem}" Text="Add" /> -->
-	                                <!-- <Button Margin="0,0,0,0" Opacity="1" Clicked="{check_json}" Text="JSON print DEBUG" /> -->
-									<!-- GRID -->
-									<Each Items="{items}">
-	                                    <!-- <DebugAction Message="i" /> -->
-	                                    <Rectangle ux:Name="box" BoxSizing="FillAspect" Aspect="1" Color="#eee" CornerRadius="2" Clicked="{clicked}">
-	                                		<WhileTrue Value="{show_image}">
-
-										        <StackPanel ZOffset="0.1">
-													<ImageFill File="{img}" />
-													<!-- <ImageFill File="{image_done}" /> -->
-										            <AddingAnimation DelayFrame="true">
-										                <Scale Factor="0.0" Duration="0.5" Easing="QuadraticInOut" />
-										            </AddingAnimation>
-
-										            <RemovingAnimation>
-										                <Scale Factor="0.0" Duration="0.5" Easing="QuadraticOut" />
-										            </RemovingAnimation>
-
-										        </StackPanel>
-
-										    </WhileTrue>
-	                                        <StackPanel ZOffset="0.0" ItemSpacing="20" ux:Name="userGridItems">
-	                                            <!-- <Text Value="{name}" /> -->
-	                                            <Image StretchMode="Fill" ContentAlignment="Center" File="{display_img}" Margin="10,10" />
-	                                            <!-- <Image Url="{display_img}" /> -->
-	                                            <!-- <Text Value="{age_field}" /> -->
-	                                            <!-- <Text Value="{age}" /> -->
-	                                        </StackPanel>
-	                                    </Rectangle>
-	                                </Each>
-								</Grid>
-							</Panel>
-						</ScrollView>
+						<StackPanel Background="#f9f9f9">
+							<Button Text="1 - 6 kuvaa" Margin="20, 40, 20, 20" Padding="20,20">
+								<Rectangle CornerRadius="4" Layer="Background" Color="#25a" />
+								<Clicked>
+									<Set menu_is_open.Value="false" />
+									<Set main_content.Visibility="Visible"/>
+									<Set main_content_buttons.Visibility="Hidden"/>
+									<Set admin_content.Visibility="Hidden"/>
+									<Set main_content_3.Visibility="Hidden"/>
+								</Clicked>
+							</Button>
+							<Button Text="Ensin sitten" Margin="20, 20" Padding="20,20">
+								<Rectangle CornerRadius="4" Layer="Background" Color="#25a" />
+								<Clicked>
+									<Set menu_is_open.Value="false" />
+									<Set main_content.Visibility="Hidden"/>
+									<Set main_content_buttons.Visibility="Hidden"/>
+									<Set admin_content.Visibility="Hidden"/>
+									<Set main_content_3.Visibility="Visible"/>
+								</Clicked>
+							</Button>
+						</StackPanel>
 					</DockPanel>
 					<!-- Second Page -->
 					<DockPanel ux:Name="admin_content" Visibility="Hidden">
@@ -169,12 +157,12 @@
 							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Add new element</Text>
 							<!-- <Text Alignment="Center" FontSize="10" Color="ForegroundColor" Value="{test_images}"/> -->
 						</Panel>
-						<Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{clear_values}">
+						<!-- <Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{clear_values}">
 						    <Rectangle Height="2" Alignment="Bottom">
 						        <SolidColor Color="#fff"/>
 						    </Rectangle>
 							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Clear values</Text>
-						</Panel>
+						</Panel> -->
 						<Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{empty_memory}">
 						    <Rectangle Height="2" Alignment="Bottom">
 						        <SolidColor Color="#fff"/>
@@ -207,6 +195,93 @@
                                 </Each>
 							</Grid>
 							<!-- <SortableList parentScrollView="parentScrollView" Label="Items" /> -->
+						</ScrollView>
+					</DockPanel>
+					<DockPanel  ux:Name="main_content" Visibility="Hidden">
+						<Panel Dock="Top" Height="56">
+							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Social stories Main</Text>
+						</Panel>
+						<ScrollView Background="#f9f9f9">
+							<Panel>
+								<WhileTrue Value="{show_help_text}">
+									<Text Alignment="Center" TextAlignment="Center" FontSize="20" Color="#000000" Margin="20,5" Padding="10,10" Value="Go to admin panel to add items here"/>
+								</WhileTrue>
+								<Grid ColumnCount="2" DefaultColumn="1*" CellSpacing="10" Margin="10,10">
+	                                <!-- <Button Margin="0,0,0,0" Opacity="1" Clicked="{addItem}" Text="Add" /> -->
+	                                <!-- <Button Margin="0,0,0,0" Opacity="1" Clicked="{check_json}" Text="JSON print DEBUG" /> -->
+									<!-- GRID -->
+									<Each Items="{items}" Limit="6">
+	                                    <!-- <DebugAction Message="i" /> -->
+	                                    <Rectangle ux:Name="box" BoxSizing="FillAspect" Aspect="1" Color="#eee" CornerRadius="2" Clicked="{clicked}">
+	                                		<WhileTrue Value="{show_image}">
+
+										        <StackPanel ZOffset="0.1">
+													<ImageFill File="{img}" />
+													<!-- <ImageFill File="{image_done}" /> -->
+										            <AddingAnimation DelayFrame="true">
+										                <Scale Factor="0.0" Duration="0.5" Easing="QuadraticInOut" />
+										            </AddingAnimation>
+
+										            <RemovingAnimation>
+										                <Scale Factor="0.0" Duration="0.5" Easing="QuadraticOut" />
+										            </RemovingAnimation>
+
+										        </StackPanel>
+
+										    </WhileTrue>
+	                                        <StackPanel ZOffset="0.0" ItemSpacing="20" ux:Name="userGridItems">
+	                                            <!-- <Text Value="{name}" /> -->
+	                                            <Image StretchMode="Fill" ContentAlignment="Center" File="{display_img}" Margin="10,10" />
+	                                            <!-- <Image Url="{display_img}" /> -->
+	                                            <!-- <Text Value="{age_field}" /> -->
+	                                            <!-- <Text Value="{age}" /> -->
+	                                        </StackPanel>
+	                                    </Rectangle>
+	                                </Each>
+								</Grid>
+							</Panel>
+						</ScrollView>
+					</DockPanel>
+					<DockPanel  ux:Name="main_content_3" Visibility="Hidden">
+						<Panel Dock="Top" Height="56">
+							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Social stories Main</Text>
+						</Panel>
+						<ScrollView Background="#f9f9f9">
+							<Panel>
+								<WhileTrue Value="{show_help_text}">
+									<Text Alignment="Center" TextAlignment="Center" FontSize="20" Color="#000000" Margin="20,5" Padding="10,10" Value="Go to admin panel to add items here"/>
+								</WhileTrue>
+								<Grid ColumnCount="1" DefaultColumn="1*" CellSpacing="10" Margin="10,10">
+	                                <!-- GRID -->
+									<Each Items="{items}" Limit="3">
+	                                    <!-- <DebugAction Message="IdentityKey" /> -->
+	                                    <Grid ColumnCount="2" DefaultColumn="1*" CellSpacing="10" Margin="10,10">
+		                                    <Panel Color="{color}">
+											    <Rectangle BoxSizing="FillAspect" Height="2" Alignment="Bottom">
+											        <SolidColor Color="#fff"/>
+											    </Rectangle>
+												<Text Alignment="Center" FontSize="21" Color="ForegroundColor" Value="{type}" />
+											</Panel>
+		                                    <Rectangle ux:Name="box" BoxSizing="FillAspect" Aspect="1" Color="#eee" CornerRadius="2" Clicked="{clicked}">
+		                                		<WhileTrue Value="{show_image}">
+											        <StackPanel ZOffset="0.1">
+														<ImageFill File="{img}" />
+											            <AddingAnimation DelayFrame="true">
+											                <Scale Factor="0.0" Duration="0.5" Easing="QuadraticInOut" />
+											            </AddingAnimation>
+											            <RemovingAnimation>
+											                <Scale Factor="0.0" Duration="0.5" Easing="QuadraticOut" />
+											            </RemovingAnimation>
+											        </StackPanel>
+											    </WhileTrue>
+		                                        <StackPanel ZOffset="0.0" ItemSpacing="20" ux:Name="userGridItems">
+		                                            <Image StretchMode="Fill" ContentAlignment="Center" File="{display_img}" Margin="10,10" />
+		                                        </StackPanel>
+		                                    </Rectangle>
+										</Grid>
+	                                </Each>
+								</Grid>
+							</Panel>
 						</ScrollView>
 					</DockPanel>
 					<!-- Third Page -->

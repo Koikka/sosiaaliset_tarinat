@@ -74,6 +74,44 @@ var default_items = Observable(
     { position_at_grid: Observable(), id: "id_34", position: 34, default_items_color: Observable("#AED6F1"), name: Observable("Vuorotellen"), img: "Assets/images/vuorotellen.png", is_added: Observable(), change_color: Observable(false) },
     { position_at_grid: Observable(), id: "id_35", position: 35, default_items_color: Observable("#AED6F1"), name: Observable("Yllätys"), img: "Assets/images/yllatys.png", is_added: Observable(), change_color: Observable(false) }
 );
+var default_items_reset = Observable(
+    { position_at_grid: Observable(), id: "id_0", position: 0, default_items_color: Observable("#AED6F1"), name: Observable("Auto"), img: "Assets/images/auto.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_1", position: 1, default_items_color: Observable("#AED6F1"), name: Observable("Heitellä palloa"), img: "Assets/images/heitella_palloa.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_2", position: 2, default_items_color: Observable("#AED6F1"), name: Observable("Jalkapallo"), img: "Assets/images/jalkapallo.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_3", position: 3, default_items_color: Observable("#AED6F1"), name: Observable("Jumppa"), img: "Assets/images/jumppa.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_4", position: 4, default_items_color: Observable("#AED6F1"), name: Observable("Jumppapallo"), img: "Assets/images/jumppapallo.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_5", position: 5, default_items_color: Observable("#AED6F1"), name: Observable("Juoda"), img: "Assets/images/juoda.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_6", position: 6, default_items_color: Observable("#AED6F1"), name: Observable("Keinua"), img: "Assets/images/keinua.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_7", position: 7, default_items_color: Observable("#AED6F1"), name: Observable("Kertoa"), img: "Assets/images/kertoa.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_8", position: 8, default_items_color: Observable("#AED6F1"), name: Observable("Kirjoittaa"), img: "Assets/images/kirjoittaa.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_9", position: 9, default_items_color: Observable("#AED6F1"), name: Observable("Kynätehtavä"), img: "Assets/images/kynatehtava.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_10", position: 10, default_items_color: Observable("#AED6F1"), name: Observable("Lautapeli"), img: "Assets/images/lautapeli.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_11", position: 11, default_items_color: Observable("#AED6F1"), name: Observable("Lego"), img: "Assets/images/lego.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_12", position: 12, default_items_color: Observable("#AED6F1"), name: Observable("Muistipeli"), img: "Assets/images/muistipeli.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_13", position: 13, default_items_color: Observable("#AED6F1"), name: Observable("Muutos"), img: "Assets/images/muutos.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_14", position: 14, default_items_color: Observable("#AED6F1"), name: Observable("Nukkeleikki"), img: "Assets/images/nukkeleikki.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_15", position: 15, default_items_color: Observable("#AED6F1"), name: Observable("Palikat"), img: "Assets/images/palikat.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_16", position: 16, default_items_color: Observable("#AED6F1"), name: Observable("Palkinto"), img: "Assets/images/palkinto.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_17", position: 17, default_items_color: Observable("#AED6F1"), name: Observable("Pallo"), img: "Assets/images/pallo.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_18", position: 18, default_items_color: Observable("#AED6F1"), name: Observable("Pallohieronta"), img: "Assets/images/pallohieronta.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_19", position: 19, default_items_color: Observable("#AED6F1"), name: Observable("Pallomeri"), img: "Assets/images/pallomeri.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_20", position: 20, default_items_color: Observable("#AED6F1"), name: Observable("Pallopelit"), img: "Assets/images/pallopelit.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_21", position: 21, default_items_color: Observable("#AED6F1"), name: Observable("Peli"), img: "Assets/images/peli.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_22", position: 22, default_items_color: Observable("#AED6F1"), name: Observable("Pihaleikki"), img: "Assets/images/pihaleikki.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_23", position: 23, default_items_color: Observable("#AED6F1"), name: Observable("Piirtää"), img: "Assets/images/piirtaa.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_24", position: 24, default_items_color: Observable("#AED6F1"), name: Observable("Pilli"), img: "Assets/images/pilli.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_25", position: 25, default_items_color: Observable("#AED6F1"), name: Observable("Puhaltaa saippuakuplia"), img: "Assets/images/puhaltaa_saippuakuplia.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_26", position: 26, default_items_color: Observable("#AED6F1"), name: Observable("Puhaltaa"), img: "Assets/images/puhaltaa.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_27", position: 27, default_items_color: Observable("#AED6F1"), name: Observable("Pukea"), img: "Assets/images/pukea.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_28", position: 28, default_items_color: Observable("#AED6F1"), name: Observable("Pyykkipojat"), img: "Assets/images/pyykkipojat.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_29", position: 29, default_items_color: Observable("#AED6F1"), name: Observable("Saippuakuplat"), img: "Assets/images/saippuakuplat.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_30", position: 30, default_items_color: Observable("#AED6F1"), name: Observable("Syödä"), img: "Assets/images/syoda.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_31", position: 31, default_items_color: Observable("#AED6F1"), name: Observable("Tehtäväpaperi"), img: "Assets/images/tehtavapaperi.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_32", position: 32, default_items_color: Observable("#AED6F1"), name: Observable("Värittää"), img: "Assets/images/varittaa.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_33", position: 33, default_items_color: Observable("#AED6F1"), name: Observable("Vessahätä"), img: "Assets/images/vessahata.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_34", position: 34, default_items_color: Observable("#AED6F1"), name: Observable("Vuorotellen"), img: "Assets/images/vuorotellen.png", is_added: Observable(), change_color: Observable(false) },
+    { position_at_grid: Observable(), id: "id_35", position: 35, default_items_color: Observable("#AED6F1"), name: Observable("Yllätys"), img: "Assets/images/yllatys.png", is_added: Observable(), change_color: Observable(false) }
+);
 // Function in test - Sortable
 function Item(id, name) {
     this.id = id;
@@ -184,16 +222,29 @@ function add_image_to_home(arg) {
 // Handle camera
 function open_camera() {
     var camera = require('FuseJS/Camera');
+    clear_values();
     camera.takePicture(640,640).then(function(photo) {
         var imgPath = "";
         var ImageTools = require("FuseJS/ImageTools");
+        // var options = {
+        //     width: 640, // Width of cropped image
+        //     height: 640 // Height of cropped image
+        // };
+
+        // ImageTools.crop(photo, options)
+        //     .then(function(newImage) {
+        //         imgPath = newImage.path;
+        //         save_visible.value = true;
+        //         console.log(save_visible.value);
+        //         image_path.value = newImage.path;
+        //     });
         var options = {
-            mode: ImageTools.IGNORE_ASPECT,
+            mode: ImageTools.IGNORE_ASPECT, // KEEP_ASPECT, SCALE_AND_CROP, IGNORE_ASPECT
             desiredWidth: 640, //The desired width in pixels
             desiredHeight: 640, //The desired height in pixels
             performInPlace: true // Boolean value determining whether the existing image will replaced
         };
-        imgPath = photo.path;
+        // imgPath = photo.path;
         ImageTools.resize(photo, options)
             .then(function(newImage) {
                 console.log("Path of resized image is " + newImage.path);
@@ -203,21 +254,11 @@ function open_camera() {
                 console.log(save_visible.value);
                 image_path.value = newImage.path;
                 //saveMessage(newImage.path);
-            });
-        // saveMessage(imgPath);
-        //Do things with image here
-        //console.log(JSON.stringify(photo));
-        // saveMessage(photo.path);
-        /*photo.save()
-            .then(function(filePath) {
-                console.log("Photo saved to: " + filePath);
-                saveMessage(filePath.path);
-                //photo.release();
-            })
-            .catch(function(error) {
-                console.log("Failed to save photo: " + error);
-                photo.release();
-            });*/
+            }).catch(
+              function(reason) {
+                console.log("Couldn't resize image: " + reason);
+              }
+            );
     }).catch(function(error) {
         //Something went wrong, see error for details
         console.log("Failed to capture photo: " + error);
@@ -252,8 +293,20 @@ function clear_values() {
 function add_item(id) {
     for (var i = 0; i < default_items.length; i++) {
         if (default_items.getAt(i).id == id) {
-            var elem = { "display_img": default_items.getAt(i).img, "position_at_grid": Observable(), "id": default_items.getAt(i).id, "name": Observable(default_items.getAt(i).name.value), "age": 0, "age_field": Observable(), "image_done": Observable(), "show_image": Observable(), "img": "Assets/done.png", "can_be_done": Observable(false), "change_color": Observable(false) };
-            items.add(elem);
+            console.log(items.length);
+            if (items.length==0) {
+                var elem = { type: "Ensin", color: "#dad308", "display_img": default_items.getAt(i).img, "position_at_grid": Observable(), "id": default_items.getAt(i).id, "name": Observable(default_items.getAt(i).name.value), "age": 0, "age_field": Observable(), "image_done": Observable(), "show_image": Observable(), "img": "Assets/done.png", "can_be_done": Observable(false), "change_color": Observable(false) };
+                items.add(elem);
+            } else if (items.length==1) {
+                var elem = { type: "Sitten", color: "#1aba3a", "display_img": default_items.getAt(i).img, "position_at_grid": Observable(), "id": default_items.getAt(i).id, "name": Observable(default_items.getAt(i).name.value), "age": 0, "age_field": Observable(), "image_done": Observable(), "show_image": Observable(), "img": "Assets/done.png", "can_be_done": Observable(false), "change_color": Observable(false) };
+                items.add(elem);
+            } else if (items.length==2) {
+                var elem = { type: "Sen jälkeen", color: "#c90004", "display_img": default_items.getAt(i).img, "position_at_grid": Observable(), "id": default_items.getAt(i).id, "name": Observable(default_items.getAt(i).name.value), "age": 0, "age_field": Observable(), "image_done": Observable(), "show_image": Observable(), "img": "Assets/done.png", "can_be_done": Observable(false), "change_color": Observable(false) };
+                items.add(elem);
+            } else {
+                var elem = { type: "image", "display_img": default_items.getAt(i).img, "position_at_grid": Observable(), "id": default_items.getAt(i).id, "name": Observable(default_items.getAt(i).name.value), "age": 0, "age_field": Observable(), "image_done": Observable(), "show_image": Observable(), "img": "Assets/done.png", "can_be_done": Observable(false), "change_color": Observable(false) };
+                items.add(elem);
+            }
         }
     }
     // saveMessage();
@@ -296,8 +349,40 @@ function addItem() {
 function empty_memory() {
     Storage.write(SAVENAME, "");
 }
+function get_from_memory(filePath, name) {
+   return new Promise(function (resolve, reject) {
+        var object = [];
+        Storage.read(SAVENAME).then(function(content) {
+            object = JSON.parse(content);
+            console.log("has content: "+content);
+            object.push({"img": filePath, "name": name, "unique": "unique"});
+        }, function(error) {
+            console.log("some error while reading data");
+        });
+        console.log("---------------------------------");
+        //default_items.value = default_items.value;
+        for (var i = 0; i < default_items.length; i++) {
+            console.log(default_items.getAt(i).unique);
+            if (default_items.getAt(i).unique === "unique") {
+                default_items.remove(i);
+            }
+        }
+        for (var i = 0; i < items.length; i++) {
+            console.log(items.getAt(i).unique);
+            if (items.getAt(i).unique === "unique") {
+                items.remove(i);
+            }
+        }
+        console.log("---------------------------------");
+        // return object;
+        resolve(object)
+    });
+}
 function saveMessage(filePath, name) {
     var object = [];
+    console.log("---------------------------------");
+    default_items.replaceAll(default_items_reset);
+    console.log("---------------------------------");
     Storage.read(SAVENAME).then(function(content) {
         object = JSON.parse(content);
         console.log("has content: "+content);
@@ -305,23 +390,17 @@ function saveMessage(filePath, name) {
     }, function(error) {
         console.log("some error while reading data");
     });
-    console.log("---------------------------------");
-    //default_items.value = default_items.value;
-    for (var i = 0; i < default_items.length; i++) {
-        console.log(default_items.getAt(i).unique);
-        if (default_items.getAt(i).unique === "unique") {
-            default_items.removeAt(i);
-        }
-    }
-    console.log("---------------------------------");
+    // object = get_from_memory(filePath, name);
+    // get_from_memory(filePath, name).then(function(res){
+    //     object = res;
     setTimeout(function() {
         if (object.length == 0) {
             console.log("Empty object");
             object.push({"img": filePath, "name": name, "unique": "unique"});
         }
-        object = JSON.stringify(object);
-        console.log("Save object: "+object);
-        Storage.write(SAVENAME, object);
+        // object = JSON.stringify(object);
+        console.log("Save object: "+JSON.stringify(object));
+        Storage.write(SAVENAME, JSON.stringify(object));
 
         var last_item = 0;
         for (var i = 0; i < default_items.length; i++) {
@@ -329,12 +408,13 @@ function saveMessage(filePath, name) {
         }
         last_item++;
         console.log("content: "+object);
-        object = JSON.parse(object);
+        // object = JSON.parse(object);
         for (var i = 0; i < object.length; i++) {
             var elem = { position_at_grid: Observable(), id: "id_"+last_item, position: last_item, default_items_color: Observable("#AED6F1"), name: Observable(object[i].name), img: object[i].img, is_added: Observable(), change_color: Observable(false), "unique": "unique" };
             default_items.add(elem);
             last_item++;
         }
+    // });
     }, 500);
     image_name.value = "";
 }
@@ -390,6 +470,7 @@ module.exports = {
     change_color: change_color,
     open_camera: open_camera,
     default_items: default_items,
+    default_items_reset: default_items_reset,
     is_added: is_added,
     add_image_to_home: add_image_to_home,
     default_items_color: default_items_color,
