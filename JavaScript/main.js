@@ -167,18 +167,6 @@ function check_json() {
         // console.log(counter+": "+items.getAt(i).name.value +" - "+ i +" - "+ items.getAt(i).can_be_done.value);
         console.log(JSON.stringify(items.getAt(i)));
     }
-
-    // Camera.takePicture(500, 500).then(function(file) {
-    //     // var picture = new Parse.Object("Picture");
-    //     // picture.set("name", file.name);
-    //     // var parseFile = new Parse.File(file.name, file);
-    //     // picture.set("file", parseFile);
-    //     // return picture.save();
-    // }).then(function(picture) {
-    //     // export.items.add({ name: picture.get('name'), url: picture.get('file').url() });
-    // }).catch(function(e) {
-    //     console.log("Error: " + e);
-    // });
 }
 // Adding new item (handle admin and home side)
 function add_image_to_home(arg) {
@@ -349,6 +337,7 @@ function addItem() {
 function empty_memory() {
     Storage.write(SAVENAME, "");
 }
+/* Not used -> waiting for promise */
 function get_from_memory(filePath, name) {
    return new Promise(function (resolve, reject) {
         var object = [];
@@ -378,6 +367,7 @@ function get_from_memory(filePath, name) {
         resolve(object)
     });
 }
+/* Save new image to memory */
 function saveMessage(filePath, name) {
     var object = [];
     console.log("---------------------------------");
@@ -418,6 +408,7 @@ function saveMessage(filePath, name) {
     }, 500);
     image_name.value = "";
 }
+/* Handles save popup */
 function image_saved() {
     save_visible.value = false;
     console.log(image_path.value);
@@ -425,19 +416,15 @@ function image_saved() {
     saveMessage(image_path.value, image_name.value);
     // TODO SAVE VALUES
 }
+/* Closes popup without saving */
 function image_ignored() {
     save_visible.value = false;
     // TODO SAVE VALUES
 }
+/* Reads all items on startup */
 Storage.read(SAVENAME).then(function(content) {
-    // test_images.value = JSON.parse(content);
-    //test_images.value = content;
     var last_item = 0;
     for (var i = 0; i < default_items.length; i++) {
-        // if (default_items.getAt(i).id == id) {
-        //     var elem = { "display_img": content, "position_at_grid": Observable(1), "id": 1, "name": Observable("temp"), "age": 0, "age_field": Observable(), "image_done": Observable(), "show_image": Observable(), "img": "Assets/done.png", "can_be_done": Observable(false), "change_color": Observable(false) };
-        //     items.add(elem);
-        // }
         last_item = i;
     }
     last_item++;
@@ -446,7 +433,6 @@ Storage.read(SAVENAME).then(function(content) {
     for (var i = 0; i < content.length; i++) {
         var elem = { position_at_grid: Observable(), id: "id_"+last_item, position: last_item, default_items_color: Observable("#AED6F1"), name: Observable(content[i].name), img: content[i].img, is_added: Observable(), change_color: Observable(false), "unique": "unique" };
         default_items.add(elem);
-        // content[i]
         last_item++;
     }
     // welcomeText.value = "Stored data: "  + data.message;

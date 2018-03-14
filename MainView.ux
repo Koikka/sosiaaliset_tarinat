@@ -36,30 +36,48 @@
 			</WhileTrue>
 			<WhileTrue Value="{save_visible}">
 				<DebugAction Message="Hello World!" />
-			    <Panel Color="#FFFFFF" Height="300">
-					<StackPanel>
-						<Panel>
-						    <Button Alignment="CenterRight" Text="Clear" Margin="15">
-						        <Clicked>
-						            <Set text.Value="" />
-						        </Clicked>
-						    </Button>
-						    <TextInput ux:Name="text" PlaceholderText="Name to event" PlaceholderColor="#ccc" Height="50" Padding="5" Margin="10" Value="{image_name}">
-						        <Rectangle Layer="Background">
-						            <Stroke Width="2" Brush="#BBB" />
-						        </Rectangle>
-						    </TextInput>
-						</Panel>
-						<Panel>
-							<Text Value="{image_path}"/>
-						</Panel>
-						<Panel Width="200">
-					    	<Button Alignment="CenterRight" Text="Save" Margin="5" Clicked="{image_saved}"></Button>
-					    	<Button Alignment="CenterLeft" Text="Ignore" Margin="5" Clicked="{image_ignored}"></Button>
-					    </Panel>
-					</StackPanel>
+				<Panel Color="#000000c4" X="0" Y="0" Height="100%" Width="100%">
+				    <Panel ux:Name="popup" Alignment="Center" Color="#FFFFFF" Height="330" Width="100%" Background="#f6fbff">
+						<StackPanel>
+							<Panel Margin="20,40,20,20">
+								<!-- <Grid Columns="1*,6*,1*,2*" ColumnCount="4" DefaultColumn="1*" CellSpacing="10" Margin="2,2" Height="40"> -->
+								<Image ContentAlignment="Center" File="{image_path}" StretchMode="Uniform" Width="100" Height="100" />
+
+							</Panel>
+							<!-- <Panel>
+								<Text Value="{image_path}"/>
+							</Panel> -->
+							<Panel>
+							    <!-- <Button Alignment="CenterRight" Text="Clear" Margin="15">
+							        <Clicked>
+							            <Set text.Value="" />
+							        </Clicked>
+							    </Button> -->
+							    <TextInput ux:Name="text" PlaceholderText="Name to event" PlaceholderColor="#ccc" Height="50" Padding="5" Margin="10" Value="{image_name}">
+							        <Rectangle Layer="Background">
+							            <Stroke Width="2" Brush="#BBB" />
+							        </Rectangle>
+							    </TextInput>
+							</Panel>
+							<Panel Width="200">
+						    	<Button Alignment="CenterRight" Text="Tallenna" Margin="-20,20" Clicked="{image_saved}" Padding="20,10,20,10" Width="100">
+						    		<float4 ux:Key="C600" ux:Value="#fff" />
+						    		<float4 ux:Key="C700" ux:Value="#fff" />
+						    		<Rectangle CornerRadius="4" Layer="Background" Color="#46aa1f" />
+						    	</Button>
+						    	<Button Alignment="CenterLeft" Text="Hylkää" Margin="-20,20" Clicked="{image_ignored}" Padding="20,10,20,10" Width="100">
+						    		<float4 ux:Key="C600" ux:Value="#fff" />
+						    		<float4 ux:Key="C700" ux:Value="#fff" />
+						    		<Rectangle CornerRadius="4" Layer="Background" Color="#d70006" />
+						    	</Button>
+						    </Panel>
+						</StackPanel>
+					</Panel>
 				</Panel>
 			</WhileTrue>
+			<WhileKeyboardVisible>
+			    <Change popup.Alignment="Top" />
+			</WhileKeyboardVisible>
 			<!-- <WhileTrue ux:Name="image_display" Value="false">
 				<Change image_panel.Opacity="1" Duration=".3" DelayBack="0" Easing="QuarticIn" EasingBack="QuarticIn" />
 			</WhileTrue> -->
@@ -93,7 +111,7 @@
 							</MenuItem>
 							<!-- MENU ITEMS -->
 							<StackPanel ux:Name="normalMenuItems" ItemSpacing="50">
-								<MenuButton Alignment="Left" Text="Home">
+								<MenuButton Alignment="Left" Text="Koti">
 									<Clicked>
 										<Set menu_is_open.Value="false" />
 										<Set admin_content.Visibility="Hidden"/>
@@ -117,7 +135,7 @@
 					<!-- PAGE CONTENT -->
 					<DockPanel  ux:Name="main_content_buttons" Visibility="Visible">
 						<Panel Dock="Top" Height="56">
-							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Social stories Main</Text>
+							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Koti</Text>
 						</Panel>
 						<StackPanel Background="#f9f9f9">
 							<Button Text="1 - 6 kuvaa" Margin="20, 40, 20, 20" Padding="20,20">
@@ -145,7 +163,7 @@
 					<!-- Second Page -->
 					<DockPanel ux:Name="admin_content" Visibility="Hidden">
 						<Panel Dock="Top" Height="56">
-							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Social stories Admin</Text>
+							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Admin</Text>
 						</Panel>
 						<Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{open_camera}">
 							<Rectangle Height="2" Alignment="Top">
@@ -154,21 +172,21 @@
 						    <Rectangle Height="2" Alignment="Bottom">
 						        <SolidColor Color="#fff"/>
 						    </Rectangle>
-							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Add new element</Text>
+							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Lisää uusi kuva</Text>
 							<!-- <Text Alignment="Center" FontSize="10" Color="ForegroundColor" Value="{test_images}"/> -->
 						</Panel>
-						<!-- <Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{clear_values}">
+						<Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{clear_values}">
 						    <Rectangle Height="2" Alignment="Bottom">
 						        <SolidColor Color="#fff"/>
 						    </Rectangle>
-							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Clear values</Text>
-						</Panel> -->
-						<Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{empty_memory}">
+							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Poista valinnat</Text>
+						</Panel>
+						<!-- <Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{empty_memory}">
 						    <Rectangle Height="2" Alignment="Bottom">
 						        <SolidColor Color="#fff"/>
 						    </Rectangle>
 							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Clear memory</Text>
-						</Panel>
+						</Panel> -->
 						<ScrollView Background="#f9f9f9">
 						<!-- <ScrollView ux:Name="parentScrollView" Background="#f9f9f9"> -->
 							<Grid ColumnCount="1" DefaultColumn="1*" CellSpacing="2" Margin="2,2">
@@ -199,7 +217,7 @@
 					</DockPanel>
 					<DockPanel  ux:Name="main_content" Visibility="Hidden">
 						<Panel Dock="Top" Height="56">
-							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Social stories Main</Text>
+							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">1 - 6 kuvaa</Text>
 						</Panel>
 						<ScrollView Background="#f9f9f9">
 							<Panel>
@@ -244,7 +262,7 @@
 					</DockPanel>
 					<DockPanel  ux:Name="main_content_3" Visibility="Hidden">
 						<Panel Dock="Top" Height="56">
-							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Social stories Main</Text>
+							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Ensin - sitten</Text>
 						</Panel>
 						<ScrollView Background="#f9f9f9">
 							<Panel>
@@ -255,14 +273,14 @@
 	                                <!-- GRID -->
 									<Each Items="{items}" Limit="3">
 	                                    <!-- <DebugAction Message="IdentityKey" /> -->
-	                                    <Grid ColumnCount="2" DefaultColumn="1*" CellSpacing="10" Margin="10,10">
+	                                    <Grid Columns="1*,2*" ColumnCount="2" DefaultColumn="1*" CellSpacing="0" Margin="10,0">
 		                                    <Panel Color="{color}">
 											    <Rectangle BoxSizing="FillAspect" Height="2" Alignment="Bottom">
 											        <SolidColor Color="#fff"/>
 											    </Rectangle>
 												<Text Alignment="Center" FontSize="21" Color="ForegroundColor" Value="{type}" />
 											</Panel>
-		                                    <Rectangle ux:Name="box" BoxSizing="FillAspect" Aspect="1" Color="#eee" CornerRadius="2" Clicked="{clicked}">
+		                                    <Rectangle ux:Name="box" BoxSizing="FillAspect" Aspect="1" Color="{color}" CornerRadius="2" Clicked="{clicked}">
 		                                		<WhileTrue Value="{show_image}">
 											        <StackPanel ZOffset="0.1">
 														<ImageFill File="{img}" />
