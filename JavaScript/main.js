@@ -207,11 +207,12 @@ function add_image_to_home(arg) {
         show_help_text.value = true;
     }
 }
+
 // Handle camera
 function open_camera() {
     var camera = require('FuseJS/Camera');
     clear_values();
-    camera.takePicture(640,640).then(function(photo) {
+    camera.takePicture(1280,1280).then(function(photo) {
         var imgPath = "";
         var ImageTools = require("FuseJS/ImageTools");
         // var options = {
@@ -227,7 +228,21 @@ function open_camera() {
         //         image_path.value = newImage.path;
         //     });
         var options = {
-            mode: ImageTools.IGNORE_ASPECT, // KEEP_ASPECT, SCALE_AND_CROP, IGNORE_ASPECT
+            mode: ImageTools.SCALE_AND_CROP,
+            desiredWidth: 400, //The desired width in pixels
+            desiredHeight: 400 //The desired height in pixels
+        };
+
+        ImageTools.resize(photo, options)
+            .then(function(newImage) {
+                console.log("Path of resized image is " + newImage.path);
+                imgPath = newImage.path;
+                save_visible.value = true;
+                console.log(save_visible.value);
+                image_path.value = newImage.path;
+            });
+        /*var options = {
+            mode: ImageTools.SCALE_AND_CROP, // KEEP_ASPECT, SCALE_AND_CROP, IGNORE_ASPECT
             desiredWidth: 640, //The desired width in pixels
             desiredHeight: 640, //The desired height in pixels
             performInPlace: true // Boolean value determining whether the existing image will replaced
@@ -246,7 +261,7 @@ function open_camera() {
               function(reason) {
                 console.log("Couldn't resize image: " + reason);
               }
-            );
+            );*/
     }).catch(function(error) {
         //Something went wrong, see error for details
         console.log("Failed to capture photo: " + error);

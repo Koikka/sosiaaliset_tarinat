@@ -60,12 +60,14 @@
 							    </TextInput>
 							</Panel>
 							<Panel Width="200">
-						    	<Button Alignment="CenterRight" Text="Tallenna" Margin="-20,20" Clicked="{image_saved}" Padding="20,10,20,10" Width="100">
+						    	<Button Alignment="CenterRight" Text="" Margin="-20,20" Clicked="{image_saved}" Padding="20,10,20,10" Width="100">
+						    		<Text Value="Tallenna" Color="#fff" Alignment="Center" TextAlignment="Center" />
 						    		<float4 ux:Key="C600" ux:Value="#fff" />
 						    		<float4 ux:Key="C700" ux:Value="#fff" />
 						    		<Rectangle CornerRadius="4" Layer="Background" Color="#46aa1f" />
 						    	</Button>
-						    	<Button Alignment="CenterLeft" Text="Hylkää" Margin="-20,20" Clicked="{image_ignored}" Padding="20,10,20,10" Width="100">
+						    	<Button Alignment="CenterLeft" Text="" Margin="-20,20" Clicked="{image_ignored}" Padding="20,10,20,10" Width="100">
+						    		<Text Value="Hylkää" Color="#fff" Alignment="Center" TextAlignment="Center" />
 						    		<float4 ux:Key="C600" ux:Value="#fff" />
 						    		<float4 ux:Key="C700" ux:Value="#fff" />
 						    		<Rectangle CornerRadius="4" Layer="Background" Color="#d70006" />
@@ -138,7 +140,8 @@
 							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Koti</Text>
 						</Panel>
 						<StackPanel Background="#f9f9f9">
-							<Button Text="1 - 6 kuvaa" Margin="20, 40, 20, 20" Padding="20,20">
+							<Button Text="" Margin="20, 40, 20, 20" Padding="20,20">
+								<Text Value="1 - 6 kuvaa" Color="#fff" Alignment="Center" TextAlignment="Center" />
 								<Rectangle CornerRadius="4" Layer="Background" Color="#25a" />
 								<Clicked>
 									<Set menu_is_open.Value="false" />
@@ -148,7 +151,8 @@
 									<Set main_content_3.Visibility="Hidden"/>
 								</Clicked>
 							</Button>
-							<Button Text="Ensin sitten" Margin="20, 20" Padding="20,20">
+							<Button Text="" Margin="20, 20" Padding="20,20">
+								<Text Value="Ensin sitten" Color="#fff" Alignment="Center" TextAlignment="Center" />
 								<Rectangle CornerRadius="4" Layer="Background" Color="#25a" />
 								<Clicked>
 									<Set menu_is_open.Value="false" />
@@ -159,13 +163,14 @@
 								</Clicked>
 							</Button>
 						</StackPanel>
+						<BottomFrameBackground DockPanel.Dock="Bottom" />
 					</DockPanel>
 					<!-- Second Page -->
 					<DockPanel ux:Name="admin_content" Visibility="Hidden">
 						<Panel Dock="Top" Height="56">
 							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Admin</Text>
 						</Panel>
-						<Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{open_camera}">
+						<!--<Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{open_camera}">
 							<Rectangle Height="2" Alignment="Top">
 						        <SolidColor Color="#fff"/>
 						    </Rectangle>
@@ -173,14 +178,25 @@
 						        <SolidColor Color="#fff"/>
 						    </Rectangle>
 							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Lisää uusi kuva</Text>
-							<!-- <Text Alignment="Center" FontSize="10" Color="ForegroundColor" Value="{test_images}"/> -->
-						</Panel>
-						<Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{clear_values}">
+						</Panel>-->
+						<!--<Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{clear_values}">
 						    <Rectangle Height="2" Alignment="Bottom">
 						        <SolidColor Color="#fff"/>
 						    </Rectangle>
 							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">Poista valinnat</Text>
-						</Panel>
+						</Panel>-->
+						<Button Dock="Top" Height="56" Margin="2,2" Padding="20,20" Clicked="{open_camera}">
+							<Text Value="Lisää uusi kuva" Color="#fff" Alignment="Center" TextAlignment="Center" />
+							<Rectangle CornerRadius="4" Layer="Background" Color="SpecialColor" />
+							<!--<Clicked>
+								<Set camera_content.Visibility="Visible"/>
+								<Set admin_content.Visibility="Hidden" />
+							</Clicked>-->
+						</Button>
+						<Button Dock="Top" Height="56" Margin="2,2" Padding="20,20" Clicked="{clear_values}">
+							<Text Value="Poista valinnat" Color="#fff" Alignment="Center" TextAlignment="Center" />
+							<Rectangle CornerRadius="4" Layer="Background" Color="SpecialColor" />
+						</Button>
 						<!-- <Panel Dock="Top" Height="56" Color="SpecialColor" Clicked="{empty_memory}">
 						    <Rectangle Height="2" Alignment="Bottom">
 						        <SolidColor Color="#fff"/>
@@ -214,7 +230,77 @@
 							</Grid>
 							<!-- <SortableList parentScrollView="parentScrollView" Label="Items" /> -->
 						</ScrollView>
+						<BottomFrameBackground DockPanel.Dock="Bottom" />
 					</DockPanel>
+					<!--<DockPanel ux:Name="camera_content" Visibility="Hidden">
+						<NativeViewHost Dock="Fill">
+							<Panel Dock="Top" Color="BackgroundColor">
+						        <CameraView ux:Name="_cameraView">
+									<Button Dock="Bottom" Height="56" Margin="2,2" Padding="20,20" Clicked="{capturePhoto}">
+											<Text Value="Take Picture" Color="#fff" Alignment="Center" TextAlignment="Center" />
+											<Rectangle CornerRadius="4" Layer="Background" Color="SpecialColor" />
+									</Button>
+								</CameraView>
+						        <JavaScript>
+						            // Nothing here
+						            var Observable = require('FuseJS/Observable');
+						            var Camera = _cameraView;
+
+									// Observables for dealing with
+									// the different states of the camera
+									var captureMode = Observable();
+									var cameraFacing = Observable();
+									var flashMode = Observable();
+									var cameraReady = Observable(false);
+
+									// getCamereInfo will resolve when the camera is fully loaded
+									Camera.getCameraInfo()
+									    .then(function(info) {
+									        captureMode.value = info[Camera.INFO_CAPTURE_MOE];
+									        cameraFacing.value = info[Camera.INFO_CAMERA_FACING];
+									        flashMode.value = info[Camera.INFO_FLASH_MODE];
+									        cameraReady.value = true;
+									    })
+									    .catch(function(error) {
+									        console.log("Failed to get camera info: " + error);
+									    });
+									    Camera.setCaptureMode(Camera.CAPTURE_MODE_PHOTO)
+									        .then(function(newCaptureMode) { /* ready to capture photo */ })
+									        .catch(function(error) { /* failed */ });
+
+									function capturePhoto() {
+									    Camera.capturePhoto(1280,1280)
+									        .then(function(photo) {
+									            var imgPath = "";
+									            var ImageTools = require("FuseJS/ImageTools");
+									            var options = {
+									                mode: ImageTools.SCALE_AND_CROP,
+									                desiredWidth: 640, //The desired width in pixels
+									                desiredHeight: 640 //The desired height in pixels
+									            };
+
+									            ImageTools.resize(photo, options)
+									                .then(function(newImage) {
+									                    console.log("Path of resized image is " + newImage.path);
+									                    imgPath = newImage.path;
+									                    save_visible.value = true;
+									                    console.log(save_visible.value);
+									                    image_path.value = newImage.path;
+									                });
+									        })
+									        .catch(function(error) {
+									            console.log("Failed to capture photo: " + error);
+									        });
+									}
+									module.exports = {
+										captureMode: captureMode,
+										setCaptureModePhoto: function () { setCaptureMode(Camera.CAPTURE_MODE_PHOTO); },
+										capturePhoto: capturePhoto
+									}
+						        </JavaScript>
+							</Panel>
+					    </NativeViewHost>
+					</DockPanel>-->
 					<DockPanel  ux:Name="main_content" Visibility="Hidden">
 						<Panel Dock="Top" Height="56">
 							<Text Alignment="Center" FontSize="21" Color="ForegroundColor">1 - 6 kuvaa</Text>
@@ -234,7 +320,8 @@
 	                                		<WhileTrue Value="{show_image}">
 
 										        <StackPanel ZOffset="0.1">
-													<ImageFill File="{img}" />
+													<!-- <ImageFill File="{img}" /> -->
+													<ImageFill File="{img}" StretchMode="UniformToFill" MemoryPolicy="UnloadUnused" />
 													<!-- <ImageFill File="{image_done}" /> -->
 										            <AddingAnimation DelayFrame="true">
 										                <Scale Factor="0.0" Duration="0.5" Easing="QuadraticInOut" />
@@ -259,6 +346,7 @@
 								</Grid>
 							</Panel>
 						</ScrollView>
+						<BottomFrameBackground DockPanel.Dock="Bottom" />
 					</DockPanel>
 					<DockPanel  ux:Name="main_content_3" Visibility="Hidden">
 						<Panel Dock="Top" Height="56">
@@ -282,15 +370,16 @@
 											</Panel>
 		                                    <Rectangle ux:Name="box" BoxSizing="FillAspect" Aspect="1" Color="{color}" CornerRadius="2" Clicked="{clicked}">
 		                                		<WhileTrue Value="{show_image}">
-											        <StackPanel ZOffset="0.1">
-														<ImageFill File="{img}" />
+											        <Panel ZOffset="0.1">
+														<!-- <ImageFill File="{img}" /> -->
+														<ImageFill File="{img}" StretchMode="UniformToFill" MemoryPolicy="UnloadUnused" />
 											            <AddingAnimation DelayFrame="true">
 											                <Scale Factor="0.0" Duration="0.5" Easing="QuadraticInOut" />
 											            </AddingAnimation>
 											            <RemovingAnimation>
 											                <Scale Factor="0.0" Duration="0.5" Easing="QuadraticOut" />
 											            </RemovingAnimation>
-											        </StackPanel>
+											        </Panel>
 											    </WhileTrue>
 		                                        <StackPanel ZOffset="0.0" ItemSpacing="20" ux:Name="userGridItems">
 		                                            <Image StretchMode="Fill" ContentAlignment="Center" File="{display_img}" Margin="10,10" />
@@ -301,6 +390,7 @@
 								</Grid>
 							</Panel>
 						</ScrollView>
+						<BottomFrameBackground DockPanel.Dock="Bottom" />
 					</DockPanel>
 					<!-- Third Page -->
 					<!-- <DockPanel ux:Name="save_content" Visibility="Hidden">
